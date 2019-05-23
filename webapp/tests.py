@@ -3,12 +3,18 @@ from app import app
 import os
 import unittest
 
+
 class AppTestCase(unittest.TestCase):
 
-   def test_root_text(self):
+    def test_root_text(self):
         tester = app.test_client(self)
         response = tester.get('/')
         assert 'Hello world!'.encode() in response.data
+
+    def test_blotter(self):
+        tester = app.test_client(self)
+        response = tester.get('/blotter/1234')
+        assert 'hello'.encode() in response.data
 
 if __name__ == '__main__':
     unittest.main()
