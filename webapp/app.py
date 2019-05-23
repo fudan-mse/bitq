@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+import tushare as ts
 
 app = Flask(__name__)
 
@@ -12,7 +13,11 @@ def hello():
 
 @app.route('/blotter/<symbol>')
 def blotterDetail(symbol=None):
-    return 'hello ' + symbol
+    print('symbole = ', symbol)
+    df = ts.get_realtime_quotes(symbol)
+    json = df.loc[0].to_json()
+    print(json)
+    return json
 
 
 if __name__ == '__main__':
