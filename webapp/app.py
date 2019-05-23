@@ -12,7 +12,7 @@ def hello():
 
 @app.route('/blotter/<symbol>')
 def blotterDetail(symbol=None):
-    return 'hello'
+    return 'hello ' + symbol
 
 
 if __name__ == '__main__':

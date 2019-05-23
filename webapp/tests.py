@@ -14,7 +14,7 @@ class AppTestCase(unittest.TestCase):
     def test_blotter(self):
         tester = app.test_client(self)
         response = tester.get('/blotter/1234')
-        assert 'hello'.encode() in response.data
+        assert 'hello 1234'.encode() in response.data
 
 if __name__ == '__main__':
     unittest.main()
