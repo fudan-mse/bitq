@@ -2,5 +2,6 @@ gunicorn
 Flask
 Jinja2
 Werkzeug
-tushare
+numpy
 pandas
+tushare
