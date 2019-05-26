@@ -2,9 +2,13 @@ import os
 
 from flask import Flask
 import tushare as ts
+from flask_socketio import SocketIO, emit
+from flask_cors import CORS
+
 
 app = Flask(__name__)
-
+socketio = SocketIO(app)
+CORS(app)
 
 @app.route('/')
 def hello():
@@ -19,6 +23,16 @@ def blotterDetail(symbol=None):
     print(json)
     return json
 
+@app.route('/market')
+def market():
+    df = ts.get_today_all()
+    json = df.to_json()
+    return json
+
+@socketio.on('blotter-detail')
+def blotterDetailSocket(symbol=None):
+    emit('blotter-detail-response', {'data': 'got it'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+    # socketio.run(app)

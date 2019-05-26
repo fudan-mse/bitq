@@ -5,3 +5,5 @@ Werkzeug
 numpy
 pandas
 tushare
+flask-socketio
+flask_cors

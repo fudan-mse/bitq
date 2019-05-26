@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd webapp
 pip3 install -r requirements.txt
 cd ..
