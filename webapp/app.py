@@ -29,7 +29,7 @@ def market():
     print('fetching market...')
     df = ts.get_today_all()
     print('df = ', df)
-    json = df.to_json()
+    json = df.to_json(orient='records')
     print(json)
     return json
 
