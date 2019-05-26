@@ -23,5 +23,5 @@ WORKDIR /opt/webapp
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi 
+CMD gunicorn --timeout 30 --bind 0.0.0.0:$PORT wsgi
 
