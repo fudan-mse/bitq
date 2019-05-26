@@ -20,3 +20,9 @@ heroku container:push web -a bitqbit
 heroku container:release web -a bitqbit
 heroku open -a bitqbit
 ```
+
+## 看日志：
+
+```shell
+heroku logs --tail -a bitqbit
+```
