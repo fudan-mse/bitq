@@ -5,6 +5,10 @@ bitq -  比特Q
 ```
 sh start.sh
 ```
+如果已安装 docker，推荐：
+```shell
+sh start-docker.sh
+```
 
 ## 本地测试
 ```

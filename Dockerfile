@@ -10,6 +10,10 @@ ADD ./webapp/requirements.txt /tmp/requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -v -r /tmp/requirements.txt
 
+RUN cat /usr/local/lib/python3.7/site-packages/tushare/stock/trading.py
+RUN sed -i "s/urlopen(request, timeout=10)/urlopen(request, timeout=60)/g" "/usr/local/lib/python3.7/site-packages/tushare/stock/trading.py"
+RUN cat /usr/local/lib/python3.7/site-packages/tushare/stock/trading.py
+
 # Add our code
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
@@ -23,5 +27,5 @@ WORKDIR /opt/webapp
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
-CMD gunicorn --timeout 30 --bind 0.0.0.0:$PORT wsgi
+CMD gunicorn --timeout 600 --bind 0.0.0.0:$PORT wsgi
 
