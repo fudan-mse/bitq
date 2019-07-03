@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 import tushare as ts
 from flask_socketio import SocketIO, emit
@@ -39,6 +37,12 @@ def blotterDetailSocket(symbol=None):
     emit('blotter-detail-response', {'data': 'got it'})
 
 
+@socketio.on('send_message')
+def handle_source(json_data):
+    text = json_data['message'].encode('ascii', 'ignore')
+    socketio.emit('echo', {'echo': 'Server Says: ' + text})
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-    # socketio.run(app)
+    # app.run(host='0.0.0.0')
+    socketio.run(app)
